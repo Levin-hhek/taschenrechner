@@ -1,0 +1,44 @@
+# Build outputs
+bin/
+obj/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Build results
+*.dll
+*.exe
+*.pdb
+
+# NuGet packages
+packages/
+*.nupkg
+
+# User-specific files
+*.rsuser
+*.user
+*.userosscache
+
+# Visual Studio auto-generated files
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.obj
+*.iobj
+*.ipdb
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+
+# Rider
+.idea/
+
+# macOS
+.DS_Store
