@@ -94,7 +94,7 @@ namespace taschenrechner
                 btn.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
                 btn.ForeColor = textColor;
                 btn.Location = new Point(startX + col * (buttonWidth + buttonSpacing), startY + row * (buttonHeight + buttonSpacing));
-                btn.Name = "btn" + text;
+                btn.Name = btn.Name ?? "btn" + text;
                 btn.Size = new Size(buttonWidth, buttonHeight);
                 btn.TabIndex = 1;
                 btn.Text = text;
@@ -103,7 +103,7 @@ namespace taschenrechner
             }
 
             // Helper method to style operator buttons
-            void StyleOperatorButton(Button btn, string text, int col, int row)
+            void StyleOperatorButton(Button btn, string displayText, string name, int col, int row)
             {
                 btn.BackColor = operatorButtonColor;
                 btn.FlatAppearance.BorderSize = 0;
@@ -113,16 +113,16 @@ namespace taschenrechner
                 btn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
                 btn.ForeColor = operatorTextColor;
                 btn.Location = new Point(startX + col * (buttonWidth + buttonSpacing), startY + row * (buttonHeight + buttonSpacing));
-                btn.Name = "btn" + text;
+                btn.Name = name;
                 btn.Size = new Size(buttonWidth, buttonHeight);
                 btn.TabIndex = 1;
-                btn.Text = text;
+                btn.Text = displayText;
                 btn.UseVisualStyleBackColor = false;
                 btn.Click += BtnOperator_Click;
             }
 
             // Helper method to style special buttons (C, ±, %)
-            void StyleSpecialButton(Button btn, string text, int col, int row, EventHandler handler)
+            void StyleSpecialButton(Button btn, string displayText, string name, int col, int row, EventHandler handler)
             {
                 btn.BackColor = specialButtonColor;
                 btn.FlatAppearance.BorderSize = 0;
@@ -132,37 +132,37 @@ namespace taschenrechner
                 btn.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
                 btn.ForeColor = textColor;
                 btn.Location = new Point(startX + col * (buttonWidth + buttonSpacing), startY + row * (buttonHeight + buttonSpacing));
-                btn.Name = "btn" + text;
+                btn.Name = name;
                 btn.Size = new Size(buttonWidth, buttonHeight);
                 btn.TabIndex = 1;
-                btn.Text = text;
+                btn.Text = displayText;
                 btn.UseVisualStyleBackColor = false;
                 btn.Click += handler;
             }
 
             // Row 0: C, ±, %, ÷
-            StyleSpecialButton(this.btnClear, "C", 0, 0, BtnClear_Click);
-            StyleSpecialButton(this.btnPlusMinus, "±", 1, 0, BtnPlusMinus_Click);
-            StyleSpecialButton(this.btnPercent, "%", 2, 0, BtnPercent_Click);
-            StyleOperatorButton(this.btnDivide, "÷", 3, 0);
+            StyleSpecialButton(this.btnClear, "C", "btnClear", 0, 0, BtnClear_Click);
+            StyleSpecialButton(this.btnPlusMinus, "±", "btnPlusMinus", 1, 0, BtnPlusMinus_Click);
+            StyleSpecialButton(this.btnPercent, "%", "btnPercent", 2, 0, BtnPercent_Click);
+            StyleOperatorButton(this.btnDivide, "÷", "btnDivide", 3, 0);
 
             // Row 1: 7, 8, 9, ×
             StyleNumberButton(this.btn7, "7", 0, 1);
             StyleNumberButton(this.btn8, "8", 1, 1);
             StyleNumberButton(this.btn9, "9", 2, 1);
-            StyleOperatorButton(this.btnMultiply, "×", 3, 1);
+            StyleOperatorButton(this.btnMultiply, "×", "btnMultiply", 3, 1);
 
             // Row 2: 4, 5, 6, -
             StyleNumberButton(this.btn4, "4", 0, 2);
             StyleNumberButton(this.btn5, "5", 1, 2);
             StyleNumberButton(this.btn6, "6", 2, 2);
-            StyleOperatorButton(this.btnSubtract, "-", 3, 2);
+            StyleOperatorButton(this.btnSubtract, "-", "btnSubtract", 3, 2);
 
             // Row 3: 1, 2, 3, +
             StyleNumberButton(this.btn1, "1", 0, 3);
             StyleNumberButton(this.btn2, "2", 1, 3);
             StyleNumberButton(this.btn3, "3", 2, 3);
-            StyleOperatorButton(this.btnAdd, "+", 3, 3);
+            StyleOperatorButton(this.btnAdd, "+", "btnAdd", 3, 3);
 
             // Row 4: 0 (double width), ., =
             // btn0 - double width

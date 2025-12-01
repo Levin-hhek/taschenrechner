@@ -278,12 +278,12 @@ namespace taschenrechner
         {
             if (displayTextBox.Text.Length > 1 && displayTextBox.Text != "Error")
             {
-                string lastChar = displayTextBox.Text[^1].ToString();
+                string lastChar = displayTextBox.Text.Substring(displayTextBox.Text.Length - 1);
                 if (lastChar == ".")
                 {
                     _hasDecimal = false;
                 }
-                displayTextBox.Text = displayTextBox.Text[..^1];
+                displayTextBox.Text = displayTextBox.Text.Substring(0, displayTextBox.Text.Length - 1);
             }
             else
             {
